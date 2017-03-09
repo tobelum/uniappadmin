@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Login &amp; Register Templates</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="set/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="set/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="set/css/form-elements.css">
+        <link rel="stylesheet" href="set/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="set/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="set/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="set/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="set/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="set/ico/apple-touch-icon-57-precomposed.png">
+
+        <script>
+
+           function logSchoolComplete(xhr,status){
+                if(status!="success"){
+                alert("status is "+status);
+                //spanSignup.innerHTML="Sign Up Unsuccessful";
+                return;
+                }
+                alert("hello:"+xhr.responseText);
+                console.log(xhr.responseText);
+                var obj= $.parseJSON(xhr.responseText);
+                
+                alert("object is "+obj);
+                
+                alert("hey");
+                if(obj.result==0){
+
+                    alert("server response: "+obj.message);
+                    
+                    //spanSignup.innerHTML=obj.message;
+                    console.log(obj.message);
+                }else{
+                     alert("Welcome, you have successfully logged in.");
+                    window.location="dashboard.html";
+                    
+                }
+           }
+
+           function logSchool(){
+                username=$("#logusername").val();
+                pword=$("#logpassword").val();
+
+                pageUrl="schoolsajax.php?cmd=1&username="+username+"&pword="+pword;
+                $.ajax(pageUrl,{async:true,complete:logSchoolComplete});
+                alert("Wait a moment while we log you in.");
+                prompt('url',pageUrl);
+           } 
+        </script>
+
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    
+                    <div class="row">
+                        <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Login to your admin page</h3>
+	                            		<p>Enter school and password to log on:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-key"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="" method="post" class="login-form">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-username">School</label>
+				                        	<input type="text" name="form-username" placeholder="School..." class="form-username form-control" id="logusername">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-password">Password</label>
+				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="logpassword">
+				                        </div>
+				                        <button type="submit" class="btn" onclick="logSchool()">Sign in!</button>
+				                    </form>
+			                    </div>
+		                    </div>
+		                
+	                        
+                        </div>
+                        
+                        	
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				<p>Made by Anli Zaimi at <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a> 
+        					having a lot of fun. <i class="fa fa-smile-o"></i></p>
+        			</div>
+        			
+        		</div>
+        	</div>
+        </footer>
+
+        <!-- Javascript -->
+        <script src="set/js/jquery-1.11.1.min.js"></script>
+        <script src="set/bootstrap/js/bootstrap.min.js"></script>
+        <script src="set/js/jquery.backstretch.min.js"></script>
+        <script src="set/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="set/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>
