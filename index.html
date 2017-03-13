@@ -37,13 +37,13 @@
                 //spanSignup.innerHTML="Sign Up Unsuccessful";
                 return;
                 }
-                alert("hello:"+xhr.responseText);
+                // alert("hello:"+xhr.responseText);
                 console.log(xhr.responseText);
                 var obj= $.parseJSON(xhr.responseText);
                 
-                alert("object is "+obj);
+                // alert("object is "+obj);
                 
-                alert("hey");
+                // alert("hey");
                 if(obj.result==0){
 
                     alert("server response: "+obj.message);
@@ -51,7 +51,7 @@
                     //spanSignup.innerHTML=obj.message;
                     console.log(obj.message);
                 }else{
-                     alert("Welcome, you have successfully logged in.");
+                     // alert("Welcome, you have successfully logged in.");
                     window.location="dashboard.html";
                     
                 }
@@ -64,7 +64,7 @@
                 pageUrl="schoolsajax.php?cmd=1&username="+username+"&pword="+pword;
                 $.ajax(pageUrl,{async:true,complete:logSchoolComplete});
                 alert("Wait a moment while we log you in.");
-                prompt('url',pageUrl);
+                // prompt('url',pageUrl);
            } 
         </script>
 

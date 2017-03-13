@@ -31,6 +31,23 @@ class schools extends adb{
      }
 
 
+     // function getGender($schoolid='none'){
+     //    $strQuery="select count()"
+     //    return $this->query($strQuery);
+     // }
+
+     // function getNationality($schoolid='none'){
+
+     //    return $this->query($strQuery);
+     // }
+
+     function getApplicants($schoolid='none'){
+        $strQuery = "select applicant.applicantid, applicant.firstname, applicant.lastname, application.status,application.comment from applicant, 
+        application where application.schoolid='$schoolid' && applicant.applicantid =application.applicantid";
+        return $this->query($strQuery);
+     }
+
+
    }
 
 

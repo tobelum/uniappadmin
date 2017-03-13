@@ -11,12 +11,14 @@
 		login();
 		break;
 
+		case 2:
+		getApplicants();
+		break;
+
 		default:
 		echo "wrong cmd";
 		break;
 	}
-
-
 
 function login(){
 	if (($_REQUEST['username']=="") || ($_REQUEST['pword']=="")) {
@@ -44,5 +46,38 @@ function login(){
 
 	}
 }
+
+function getApplicants() {
+
+	include_once("schools.php");
+	$obj = new schools();
+	
+	// $a = $obj->getSchools();
+	$schoolid = $_SESSION['schoolid'];
+
+	$result = $obj->getApplicants($schoolid);
+
+
+
+	if (!$result) {
+		echo '{"result":0 ,"message": "Could not display applicants"}';
+	}
+	
+	else {
+		$row=$obj->fetch();
+		echo '{"result":1,"row":[';
+		while($row){
+			echo json_encode($row);
+
+			$row=$obj->fetch();
+			if($row!=false){
+				echo ",";
+			}
+		}
+		echo "]}";	
+	}
+	
+}
+
 
 ?>
